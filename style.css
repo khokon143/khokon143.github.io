@@ -1,0 +1,35 @@
+div {
+    margin:10px;
+    background:#fff;
+}
+
+body {
+    background: coral;
+}
+
+h1 {
+    text-align: center;
+}
+.btn{
+    display: block;
+    margin: 0 auto;
+}
+
+.parent{
+    display: flex;
+    justify-content: center; /* → ← */
+    align-items: center;     /* ↓ ↑ */
+}
+
+.input-box input{
+    width: 100%;
+    padding: 10px;
+    background: fff;
+}
+
+body{
+    display: flex;
+    justify-content: center; /* → ← */
+    align-items: center;     /* ↑ ↓ */
+    height: 100vh;
+}
