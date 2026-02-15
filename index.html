@@ -1,44 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+<meta charset="UTF-8">
+<title>Unlock System</title>
 
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="style.css">
+<style>
+body{
+    background:#2c1f2f;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    padding-top:100px;
+}
 
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico">
+button{
+    background:#ff5fa2;
+    border:none;
+    padding:15px 35px;
+    color:white;
+    font-size:20px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+input{
+    padding:10px;
+    font-size:18px;
+    width:120px;
+    text-align:center;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Welcome to My Website ❤️</h1>
-        <p>Made with Love by Me 😘</p>
-    </header>
+<h1>Unlock System 💖</h1>
 
-    <!-- Main Content -->
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>This is my first website.</p>
-        </section>
+<button id="startBtn">Click Me</button>
 
-        <section>
-            <h2>Contact</h2>
-            <p>Email: example@gmail.com</p>
-        </section>
-    </main>
+<div id="box"></div>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 My Website | All Rights Reserved 💕</p>
-    </footer>
+<script>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+// Your Link Here ❤️
+let link = "https://www.effectivegatecpm.com/ppgyryuv?key=0bf560df2a31c0e50d6883c2c8a24bb2";
+
+let right = 0;
+
+// Button click event
+document.getElementById("startBtn").addEventListener("click", function(){
+
+    let a = Math.floor(Math.random()*10)+1;
+    let b = Math.floor(Math.random()*10)+1;
+
+    right = a + b;
+
+    document.getElementById("box").innerHTML = `
+        <h3>Solve This 😘</h3>
+        <p>${a} + ${b} = ?</p>
+
+        <input type="number" id="ans">
+        <br><br>
+
+        <button onclick="check()">Submit</button>
+    `;
+});
+
+function check(){
+
+    let user = document.getElementById("ans").value;
+
+    if(user == right){
+
+        alert("Correct Baby ❤️");
+
+        if(confirm("Open Link? 🌐")){
+            window.open(link,"_blank");
+        }
+
+        location.reload();
+
+    }else{
+        alert("Wrong 😢 Try Again!");
+    }
+}
+
+</script>
 
 </body>
 </html>
