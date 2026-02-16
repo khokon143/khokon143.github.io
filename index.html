@@ -1,49 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <title>Team X</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Welcome to My Website ❤️</h1>
-        <p>Made with Love by Me 😘</p>
-    </header>
+<!-- Header -->
+<header>
+  <div class="menu" id="menuBtn">☰</div>
+  <h2>Team X</h2>
+  <!-- Dark Mode Button -->
+<button id="themeBtn">🌙</button>
+</header>
 
-    <!-- Main Content -->
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>This is my first website.</p>
-        </section>
+<!-- Sidebar -->
+<nav id="nav">
+  <span class="close" id="closeBtn">✖</span>
 
-        <section>
-            <h2>Contact</h2>
-            <p>Email: example@gmail.com</p>
-        </section>
-    </main>
+  <a href="#">Sign Up</a>
+  <a href="#">Login</a>
+  <a href="#">Contact</a>
+  <a href="#">Help</a>
+</nav>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 My Website | All Rights Reserved 💕</p>
-    </footer>
+<!-- Overlay -->
+<div id="overlay"></div>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+<!-- Slider -->
+<div class="slider">
 
+  <div class="slides">
+    <img src="img1.jpg" class="slide active">
+    <img src="img2.jpg" class="slide">
+    <img src="img3.jpg" class="slide">
+    <img src="img4.jpg" class="slide">
+  </div>
+
+  <!-- Buttons -->
+  <button class="prev">❮</button>
+  <button class="next">❯</button>
+
+</div>
+
+<!-- Main -->
+<main>
+  <h1>Welcome 💖</h1>
+  <p>Choose Your Option</p>
+
+  <div class="container">
+    <div class="box" id="box1" data-page="box1.html">StartAap Ads</div>
+    <div class="box" id="Admove Ads" data-page="box2.html">Admove Ads</div>
+    <div class="box" id="CPA Ads" data-page="box3.html">Unity Ads</div>
+    <div class="box" id="Unity Ads" data-page="box4.html">CPA Ads</div>
+  </div>
+
+</main>
+
+
+
+<script src="script.js"></script>
 </body>
-    <script>
-    setInterval(function(){
-        location.reload();
-    }, 10000); // 10000 ms = 10 seconds
-    </script>
 </html>
