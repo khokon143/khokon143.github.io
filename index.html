@@ -1,305 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TopBazer - Free Fire TopUp & More</title>
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Mubarak</title>
+<style>
+/* ================= GLOBAL STYLES ================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    overflow-x: hidden;
+    color: #fff;
+}h1, h2, h3 { text-align: center; }
 
-    header {
-      background: linear-gradient(90deg, #00c853, #64dd17);
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.4rem;
-      position: relative;
-      z-index: 10;
-    }
+.container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
 
-    /* Notice Banner Style (like GG Bazar) */
-    .notice-banner {
-      background-color: #00c853; /* vibrant green */
-      color: white;
-      padding: 12px 15px;
-      text-align: center;
-      font-size: 0.95rem;
-      font-weight: 600;
-      position: relative;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+/* ================= GLOW TEXT ================= */ .glow { font-size: 3rem; color: #fff; text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 80px #00ffcc; animation: glowPulse 2s infinite alternate; }
 
-    .notice-banner .close-btn {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.2);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+@keyframes glowPulse { from { text-shadow: 0 0 10px #00ffcc; } to { text-shadow: 0 0 40px #00ffcc; } }
 
-    .notice-banner .close-btn:hover {
-      background: rgba(0,0,0,0.4);
-    }
+/* ================= BUTTON ================= */ .btn { margin-top: 20px; padding: 12px 25px; border: none; border-radius: 30px; background: linear-gradient(45deg, #ffcc00, #ff6600); color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; }
 
-    /* Slider / Promo Banner Style (like GG Bazar) */
-    .slider {
-      position: relative;
-      max-width: 480px;
-      margin: 15px auto;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
+.btn:hover { transform: scale(1.1); box-shadow: 0 0 15px #ffcc00; }
 
-    .slider .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
+/* ================= MOON ================= */ .moon { width: 120px; height: 120px; border-radius: 50%; background: #fff; box-shadow: -25px 0 0 5px #0f2027; position: absolute; top: 50px; right: 50px; }
 
-    .slider .slide {
-      min-width: 100%;
-      position: relative;
-    }
+/* ================= STARS ================= */ .star { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; animation: twinkle 2s infinite alternate; }
 
-    .slider .slide img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
+@keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
 
-    .slider .slide .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
+/* ================= FIREWORK ================= */ .firework { position: absolute; width: 5px; height: 5px; background: gold; border-radius: 50%; animation: explode 1s ease-out forwards; }
 
-    .slider .slide .overlay h2 {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-    }
+@keyframes explode { to { transform: translate(var(--x), var(--y)); opacity: 0; } }
 
-    .slider .slide .overlay p {
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
+/* ================= MESSAGE BOX ================= */ .message-box { margin-top: 30px; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); text-align: center; max-width: 400px; display: none; }
 
-    .slider .slide .overlay .arrow {
-      font-size: 2rem;
-      animation: arrow-bounce 1.5s infinite;
-    }
+/* ================= SCROLL TEXT ================= */ .marquee { position: absolute; bottom: 10px; width: 100%; overflow: hidden; }
 
-    @keyframes arrow-bounce {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(10px); }
-    }
+.marquee span { display: inline-block; padding-left: 100%; animation: scrollText 10s linear infinite; }
 
-    /* Navigation Buttons */
-    .slider .prev, .slider .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      z-index: 10;
-    }
+@keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-    .slider .prev { left: 10px; }
-    .slider .next { right: 10px; }
-
-    .slider .prev:hover, .slider .next:hover {
-      background: rgba(0,0,0,0.7);
-    }
-
-    main {
-      padding: 0 15px 15px;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.3rem;
-      margin: 20px 0 10px;
-      color: #00c853;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      text-align: center;
-      transition: transform 0.12s;
-    }
-
-    .card:active {
-      transform: scale(0.97);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card p {
-      padding: 12px 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      background: #f0f0f0;
-      margin: 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px 10px;
-      color: #777;
-      font-size: 0.85rem;
-      border-top: 1px solid #eee;
-      margin-top: 20px;
-    }
-  </style>
+</style>
 </head>
+<body><div class="moon"></div><div class="container">
+    <h1 class="glow">Eid Mubarak 🌙</h1>
+    <button class="btn" onclick="showMessage()">Click for Surprise</button><div class="message-box" id="messageBox">
+    <h2>✨ Eid Mubarak ✨</h2>
+    <p>May your life be filled with happiness, peace, and prosperity.</p>
+</div>
 
-<body>
+</div><div class="marquee">
+    <span>🌙 Eid Mubarak to You and Your Family 💖 Stay Blessed ✨</span>
+</div><script>
 
-  <header>
-    TopBazer
-  </header>
+/* ================= SHOW MESSAGE ================= */
+function showMessage() {
+    document.getElementById("messageBox").style.display = "block";
+    createFireworks();
+}
 
-  <!-- Notice Board / Banner -->
-  <div class="notice-banner" id="notice">
-    <span>🚀 GG Bazar-এর মতো ৬৮ ঘণ্টা টপআপ চালু থাকছে! সকল টপআপ AI দিয়ে ৩০ সেকেন্ডের ভিতরে দেওয়া হয়। পাচ্ছেন Auto Delivery সুবিধা!</span>
-    <button class="close-btn" onclick="document.getElementById('notice').style.display='none'">×</button>
-  </div>
-
-  <!-- Slider / Promo Banner (with simple JS for sliding) -->
-  <div class="slider" id="slider">
-    <div class="slides" id="slides">
-      <!-- Slide 1 (Inspired by GG Bazar screenshot) -->
-      <div class="slide">
-        <img src="https://via.placeholder.com/480x180/00c853/ffffff?text=Promo+Image+1" alt="Promo 1">
-        <div class="overlay">
-          <h2>প্রতিদিন গিফটস, অফার জানতে যুক্ত থাকুন</h2>
-          <p>টেলিগ্রাম চ্যানেল</p>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-
-      <!-- Slide 2 (Add more if needed) -->
-      <div class="slide">
-        <img src="https://via.placeholder.com/480x180/64dd17/ffffff?text=Promo+Image+2" alt="Promo 2">
-        <div class="overlay">
-          <h2>নতুন অফার: ২০% ডিসকাউন্ট!</h2>
-          <p>ফ্রি ফায়ার টপআপে</p>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="slide">
-        <img src="https://via.placeholder.com/480x180/00c853/ffffff?text=Promo+Image+3" alt="Promo 3">
-        <div class="overlay">
-          <h2>জয়েন করুন আমাদের কমিউনিটি</h2>
-          <p>ডিসকর্ড সার্ভার</p>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </div>
-
-    <button class="prev" onclick="changeSlide(-1)">❮</button>
-    <button class="next" onclick="changeSlide(1)">❯</button>
-  </div>
-
-  <main>
-    <h3 class="section-title">Free Fire</h3>
-    <div class="grid">
-      <div class="card">
-        <img src="1760172246-02.jpeg" alt="Free Fire TopUp">
-        <p>Free Fire TopUp [BD]</p>
-      </div>
-      
-      <div class="card">
-        <img src="1760172339-01.jpeg" alt="Level Up Pass">
-        <p>Level Up Pass (BD Server)</p>
-      </div>
-      
-      <div class="card">
-        <img src="1760172361-01.jpeg" alt="Weekly Lite">
-        <p>Weekly Lite</p>
-      </div>
-      
-      <div class="card">
-        <img src="1760172262-01.jpeg" alt="Weekly/Monthly Offer">
-        <p>Weekly/Monthly Offer</p>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    © 2026 — TopBazer
-  </footer>
-
-  <script>
-    let currentSlide = 0;
-    const slides = document.getElementById('slides');
-    const totalSlides = slides.children.length;
-
-    function changeSlide(direction) {
-      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+/* ================= RANDOM STARS ================= */
+function createStars() {
+    for (let i = 0; i < 100; i++) {
+        let star = document.createElement("div");
+        star.classList.add("star");
+        star.style.top = Math.random() * window.innerHeight + "px";
+        star.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(star);
     }
+}
+createStars();
 
-    // Auto-slide every 5 seconds (optional)
-    setInterval(() => changeSlide(1), 5000);
-  </script>
+/* ================= FIREWORK EFFECT ================= */
+function createFireworks() {
+    for (let i = 0; i < 50; i++) {
+        let fw = document.createElement("div");
+        fw.classList.add("firework");
 
-</body>
+        let x = (Math.random() - 0.5) * 200 + "px";
+        let y = (Math.random() - 0.5) * 200 + "px";
+
+        fw.style.setProperty('--x', x);
+        fw.style.setProperty('--y', y);
+
+        fw.style.top = "50%";
+        fw.style.left = "50%";
+
+        document.body.appendChild(fw);
+
+        setTimeout(() => fw.remove(), 1000);
+    }
+}
+
+/* ================= BACKGROUND COLOR ANIMATION ================= */
+let colors = ["#0f2027", "#203a43", "#2c5364", "#1c1c1c"];
+let i = 0;
+
+setInterval(() => {
+    document.body.style.background = colors[i];
+    i = (i + 1) % colors.length;
+}, 5000);
+
+/* ================= TYPING EFFECT ================= */
+let text = "Eid Mubarak! May Allah bless you!";
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        document.querySelector(".glow").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 80);
+    }
+}
+
+// Uncomment below to enable typing effect
+// typeEffect();
+
+/* ================= CLICK SPARK ================= */
+document.addEventListener("click", function(e) {
+    let spark = document.createElement("div");
+    spark.classList.add("firework");
+
+    spark.style.top = e.clientY + "px";
+    spark.style.left = e.clientX + "px";
+
+    spark.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
+    spark.style.setProperty('--y', (Math.random() * 100 - 50) + 'px');
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 1000);
+});
+
+/* ================= EXTRA DECOR ================= */
+for (let i = 0; i < 30; i++) {
+    let star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
+    document.body.appendChild(star);
+}
+
+/* ================= FLOATING TEXT ================= */
+function floatingText() {
+    let txt = document.createElement("div");
+    txt.innerText = "✨ Eid Mubarak ✨";
+    txt.style.position = "absolute";
+    txt.style.left = Math.random() * window.innerWidth + "px";
+    txt.style.top = window.innerHeight + "px";
+    txt.style.fontSize = "20px";
+    txt.style.opacity = 0.7;
+
+    document.body.appendChild(txt);
+
+    let pos = window.innerHeight;
+    let interval = setInterval(() => {
+        pos -= 2;
+        txt.style.top = pos + "px";
+        if (pos < -50) {
+            clearInterval(interval);
+            txt.remove();
+        }
+    }, 30);
+}
+
+setInterval(floatingText, 2000);
+
+/* ================= END ================= */
+
+</script></body>
 </html>
