@@ -1,174 +1,19 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eid Mubarak</title>
-<style>
-/* ================= GLOBAL STYLES ================= */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    overflow-x: hidden;
-    color: #fff;
-}h1, h2, h3 { text-align: center; }
-
-.container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-
-/* ================= GLOW TEXT ================= */ .glow { font-size: 3rem; color: #fff; text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 80px #00ffcc; animation: glowPulse 2s infinite alternate; }
-
-@keyframes glowPulse { from { text-shadow: 0 0 10px #00ffcc; } to { text-shadow: 0 0 40px #00ffcc; } }
-
-/* ================= BUTTON ================= */ .btn { margin-top: 20px; padding: 12px 25px; border: none; border-radius: 30px; background: linear-gradient(45deg, #ffcc00, #ff6600); color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; }
-
-.btn:hover { transform: scale(1.1); box-shadow: 0 0 15px #ffcc00; }
-
-/* ================= MOON ================= */ .moon { width: 120px; height: 120px; border-radius: 50%; background: #fff; box-shadow: -25px 0 0 5px #0f2027; position: absolute; top: 50px; right: 50px; }
-
-/* ================= STARS ================= */ .star { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; animation: twinkle 2s infinite alternate; }
-
-@keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
-
-/* ================= FIREWORK ================= */ .firework { position: absolute; width: 5px; height: 5px; background: gold; border-radius: 50%; animation: explode 1s ease-out forwards; }
-
-@keyframes explode { to { transform: translate(var(--x), var(--y)); opacity: 0; } }
-
-/* ================= MESSAGE BOX ================= */ .message-box { margin-top: 30px; padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); text-align: center; max-width: 400px; display: none; }
-
-/* ================= SCROLL TEXT ================= */ .marquee { position: absolute; bottom: 10px; width: 100%; overflow: hidden; }
-
-.marquee span { display: inline-block; padding-left: 100%; animation: scrollText 10s linear infinite; }
-
-@keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Page</title>
 </head>
-<body><div class="moon"></div><div class="container">
-    <h1 class="glow">Eid Mubarak 🌙</h1>
-    <button class="btn" onclick="showMessage()">Click for Surprise</button><div class="message-box" id="messageBox">
-    <h2>✨ Eid Mubarak ✨</h2>
-    <p>May your life be filled with happiness, peace, and prosperity.</p>
-</div>
+<body>
 
-</div><div class="marquee">
-    <span>🌙 Eid Mubarak to You and Your Family 💖 Stay Blessed ✨</span>
-</div><script>
+<img src="img1">
 
-/* ================= SHOW MESSAGE ================= */
-function showMessage() {
-    document.getElementById("messageBox").style.display = "block";
-    createFireworks();
+<script>
+while (true) {
+    console.log("I love you ❤️");
 }
 
-/* ================= RANDOM STARS ================= */
-function createStars() {
-    for (let i = 0; i < 100; i++) {
-        let star = document.createElement("div");
-        star.classList.add("star");
-        star.style.top = Math.random() * window.innerHeight + "px";
-        star.style.left = Math.random() * window.innerWidth + "px";
-        document.body.appendChild(star);
-    }
-}
-createStars();
-
-/* ================= FIREWORK EFFECT ================= */
-function createFireworks() {
-    for (let i = 0; i < 50; i++) {
-        let fw = document.createElement("div");
-        fw.classList.add("firework");
-
-        let x = (Math.random() - 0.5) * 200 + "px";
-        let y = (Math.random() - 0.5) * 200 + "px";
-
-        fw.style.setProperty('--x', x);
-        fw.style.setProperty('--y', y);
-
-        fw.style.top = "50%";
-        fw.style.left = "50%";
-
-        document.body.appendChild(fw);
-
-        setTimeout(() => fw.remove(), 1000);
-    }
-}
-
-/* ================= BACKGROUND COLOR ANIMATION ================= */
-let colors = ["#0f2027", "#203a43", "#2c5364", "#1c1c1c"];
-let i = 0;
-
-setInterval(() => {
-    document.body.style.background = colors[i];
-    i = (i + 1) % colors.length;
-}, 5000);
-
-/* ================= TYPING EFFECT ================= */
-let text = "Eid Mubarak! May Allah bless you!";
-let index = 0;
-
-function typeEffect() {
-    if (index < text.length) {
-        document.querySelector(".glow").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 80);
-    }
-}
-
-// Uncomment below to enable typing effect
-// typeEffect();
-
-/* ================= CLICK SPARK ================= */
-document.addEventListener("click", function(e) {
-    let spark = document.createElement("div");
-    spark.classList.add("firework");
-
-    spark.style.top = e.clientY + "px";
-    spark.style.left = e.clientX + "px";
-
-    spark.style.setProperty('--x', (Math.random() * 100 - 50) + 'px');
-    spark.style.setProperty('--y', (Math.random() * 100 - 50) + 'px');
-
-    document.body.appendChild(spark);
-
-    setTimeout(() => spark.remove(), 1000);
-});
-
-/* ================= EXTRA DECOR ================= */
-for (let i = 0; i < 30; i++) {
-    let star = document.createElement("div");
-    star.classList.add("star");
-    star.style.top = Math.random() * 100 + "%";
-    star.style.left = Math.random() * 100 + "%";
-    document.body.appendChild(star);
-}
-
-/* ================= FLOATING TEXT ================= */
-function floatingText() {
-    let txt = document.createElement("div");
-    txt.innerText = "✨ Eid Mubarak ✨";
-    txt.style.position = "absolute";
-    txt.style.left = Math.random() * window.innerWidth + "px";
-    txt.style.top = window.innerHeight + "px";
-    txt.style.fontSize = "20px";
-    txt.style.opacity = 0.7;
-
-    document.body.appendChild(txt);
-
-    let pos = window.innerHeight;
-    let interval = setInterval(() => {
-        pos -= 2;
-        txt.style.top = pos + "px";
-        if (pos < -50) {
-            clearInterval(interval);
-            txt.remove();
-        }
-    }, 30);
-}
-
-setInterval(floatingText, 2000);
-
-/* ================= END ================= */
-
-</script></body>
+</script>
+</body>
 </html>
