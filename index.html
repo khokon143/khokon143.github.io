@@ -1,19 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loop</title>
-</head>
-<body>
-
-<img src="img1">
-
-<script>
-while (true) {
-    console.log("I love you ❤️");
+    <title>My Website</title>
+    <style>
+        #Display {
+            width: 85%;
+            margin: 10px;
+        }
+#calculetor {
+    border-radius: 5px;
+    border: solid black;
+    margin: 5px
 }
 
-</script>
+.button {
+    background-color:lightgreen;
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+    
+}
+    </style>
+</head>
+<body>
+    <div id="calculetor">
+    <input type="text" id="display">
+    <div id="button-box">
+    <button class="button" onclick="cd='';
+    document.querySelector('#display').value=cd;">C</button>
+    <button class="button" onclick="cd=cd+'1';
+    document.querySelector('#display').value=cd;">1</button>
+    <button class="button" onclick="cd=cd+'2';
+    document.querySelector('#display').value=cd;">2</button>
+    <button class="button" onclick="cd=cd+'3';
+    document.querySelector('#display').value=cd;">3</button>
+    <button class="button" onclick="cd=cd+'4';
+    document.querySelector('#display').value=cd;">4</button>
+    <button class="button" onclick="cd=cd+'5';
+    document.querySelector('#display').value=cd;">5</button>
+    <button class="button" onclick="cd=cd+'6';
+    document.querySelector('#display').value=cd;">6</button>
+    <button class="button" onclick="cd=cd+'7';
+    document.querySelector('#display').value=cd;">7</button>
+    <button class="button" onclick="cd=cd+'8';
+    document.querySelector('#display').value=cd;">8</button>
+    <button class="button" onclick="cd=cd+'9';
+    document.querySelector('#display').value=cd;">9</button>
+    <button class="button" onclick="cd=cd+'0';
+    document.querySelector('#display').value=cd;">0</button>
+    <button class="button" onclick="cd=cd+'+';
+    document.querySelector('#display').value=cd;">+</button>
+    <button class="button" onclick="cd=cd+'-';
+    document.querySelector('#display').value=cd;">-</button>
+    
+        <button class="button" onclick="cd=cd+'*';
+    document.querySelector('#display').value=cd;">×</button>
+
+    <button class="button" onclick="cd=cd+'/';
+    document.querySelector('#display').value=cd;">÷</button>
+    <button class="button" onclick="cd=cd+'.';
+    document.querySelector('#display').value=cd;">.</button>
+    <button class="button" onclick="let result=eval(cd);
+    cd=result;
+    document.querySelector('#display').value=cd;">=</button>
+    <button class="khokon">©khokon</button>
+    </div>
+    </div>
+    <script>
+        let cd='';
+    </script>
 </body>
 </html>
